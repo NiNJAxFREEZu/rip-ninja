@@ -12,8 +12,8 @@ For example:
 $ ./rip-ninja Darude-Sandstorm
 ```
 Will rip a CD and output: 
-- `.wav` files into `$HOME/Music/wav/Darude-Sandstorm`
-- `.mp3` files into `$HOME/Music/mp3/Darude-Sandstorm`.
+- `.wav` files into `$HOME/Music/wav/Darude-Sandstorm/`
+- `.mp3` files into `$HOME/Music/mp3/Darude-Sandstorm/`.
 
 
 ## Dependencies
