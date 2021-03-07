@@ -1,5 +1,5 @@
 # rip-ninja
-Simple script for easy CD audio ripping.
+Simple script for easy CD audio ripping like a true lazy ninja that you are.
 
 ## How it works?
 Rips all the audio tracks from a CD into `.wav` files and then converts them into 320kbps `.mp3` files.  
@@ -14,6 +14,9 @@ $ ./rip-ninja Darude-Sandstorm
 Will rip a CD and output: 
 - `.wav` files into `$HOME/Music/wav/Darude-Sandstorm/`
 - `.mp3` files into `$HOME/Music/mp3/Darude-Sandstorm/`.
+
+## But I would like to save my files into different directory!
+To keep the script super simple and bug-free, you can customize some stuff like output paths or mp3 bitrate via editing the source code in the dedicated section at the beginning of the script. It sounds scary but it's actually super `easy`.
 
 
 ## Dependencies
