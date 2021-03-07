@@ -1,16 +1,18 @@
 #!/bin/bash
 
-### Function declarations
-print_help () {
-	echo 'USAGE: rip-ninja [name-of-the-album]'
-}
-
 ### You can change some default settings down here if you want to
-# Default music directory 
+
+# Default music directory.
 MUSIC_DIR=~/Music
 
 # Output mp3 bitrate (kbps)
 BITRATE=320
+
+### ------------------------------------------------------------
+
+print_help () {
+	echo 'USAGE: rip-ninja [name-of-the-album]'
+}
 
 if [ "$1" == "-h" ] || [ "$1" == "--help" ] 
 then
