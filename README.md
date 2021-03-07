@@ -6,7 +6,13 @@ Rips all the audio tracks from a CD into `.wav` files and then it converts them 
 Both `.wav` and `.mp3` files are saved into separate directories in `$HOME/Music/` - just the way I like it.
 
 ## How to use it?
-Simply put a CD into your CD-drive and launch the script.
+Simply put a CD into your CD-drive and launch the script with one argument -- name of the album or whatever it is that you are ripping.  
+For example:
+```bash
+./rip-ninja Darude-Sandstorm
+```
+Will rip a CD and save the `.wav` files into `$HOME/Music/wav/Darude-Sandstorm` and `.mp3` files into `$HOME/Music/mp3/Darude-Sandstorm`.
+
 
 ## Dependencies
 - cdparanoia (CD ripping)
