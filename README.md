@@ -1,5 +1,5 @@
 # rip-ninja
-Simple script for easy CD audio ripping.
+Simple script for easy CD audio ripping like a true lazy ninja that you are.
 
 ## How it works?
 Rips all the audio tracks from a CD into `.wav` files and then converts them into 320kbps `.mp3` files.  
