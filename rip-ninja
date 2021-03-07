@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ $1 = '' ];
+then
+	echo "Please pass the name of the album."
+	exit 1
+fi
+
+# Ripping cd into wave files
+mkdir /home/ninja/Music/wav/$1
+mkdir /home/ninja/Music/mp3/$1
+cd /home/ninja/Music/wav/$1
+cdparanoia -B
+
+# Converting ripped wave files into mp3
+for track in *;
+do
+	lame -b 320 $track --out-dir /home/ninja/Music/mp3/$1
+done
