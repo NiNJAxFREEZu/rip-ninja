@@ -11,7 +11,9 @@ For example:
 ```bash
 ./rip-ninja Darude-Sandstorm
 ```
-Will rip a CD and save the `.wav` files into `$HOME/Music/wav/Darude-Sandstorm` and `.mp3` files into `$HOME/Music/mp3/Darude-Sandstorm`.
+Will rip a CD and output: 
+- `.wav` files into `$HOME/Music/wav/Darude-Sandstorm`
+- `.mp3` files into `$HOME/Music/mp3/Darude-Sandstorm`.
 
 
 ## Dependencies
