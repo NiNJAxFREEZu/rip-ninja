@@ -9,7 +9,7 @@ Both `.wav` and `.mp3` files are saved into separate directories in `$HOME/Music
 Simply put a CD into your CD-drive and launch the script with one argument -- name of the album or whatever it is that you are ripping.  
 For example:
 ```bash
-./rip-ninja Darude-Sandstorm
+$ ./rip-ninja Darude-Sandstorm
 ```
 Will rip a CD and output: 
 - `.wav` files into `$HOME/Music/wav/Darude-Sandstorm`
