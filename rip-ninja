@@ -1,8 +1,27 @@
 #!/bin/bash
 
-if [ $1 = '' ];
+# Function declarations
+print_help () {
+	echo 'USAGE: rip-ninja [name-of-the-album]'
+}
+
+if [ "$1" == "-h" ] || [ "$1" == "--help" ] 
+then
+	print_help
+	exit 0
+fi
+
+if [ -z "$1" ]
 then
 	echo "Please give the name of the album."
+	print_help
+	exit 1
+fi
+
+if [ -n "$2" ]
+then
+	echo "Too many arguments."
+	print_help
 	exit 1
 fi
 
