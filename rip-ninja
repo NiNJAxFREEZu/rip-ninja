@@ -2,18 +2,21 @@
 
 if [ $1 = '' ];
 then
-	echo "Please pass the name of the album."
+	echo "Please give the name of the album."
 	exit 1
 fi
 
+# Creating file directories
+mkdir ~/Music
+mkdir ~/Music/wav/$1
+mkdir ~/Music/mp3/$1
+
 # Ripping cd into wave files
-mkdir /home/ninja/Music/wav/$1
-mkdir /home/ninja/Music/mp3/$1
-cd /home/ninja/Music/wav/$1
+cd ~/Music/wav/$1
 cdparanoia -B
 
 # Converting ripped wave files into mp3
 for track in *;
 do
-	lame -b 320 $track --out-dir /home/ninja/Music/mp3/$1
+	lame -b 320 $track --out-dir ~/Music/mp3/$1
 done
