@@ -20,6 +20,4 @@ Will rip a CD and output:
 - cdparanoia (CD ripping)
 - lame (`.wav` to `.mp3` conversion)
 
-All dependencies are available in most major distributions repositories such as:
-- Ubuntu
-- Archlinux
+All dependencies are available in most major distros repositories
