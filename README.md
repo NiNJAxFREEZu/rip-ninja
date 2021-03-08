@@ -2,7 +2,7 @@
 Simple script for easy CD audio ripping like a true lazy ninja that you are.
 
 ## How it works?
-Rips all the audio tracks from a CD into `.wav` files and then converts them into 320kbps `.mp3` files.  
+Rips all the audio tracks from a CD into `.wav` files and then converts them into `.mp3` files.  
 Both `.wav` and `.mp3` files are saved into separate directories in `$HOME/Music/` - just the way I like it.
 
 ## How to use it?
