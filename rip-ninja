@@ -14,6 +14,17 @@ print_help () {
 	echo 'USAGE: rip-ninja [name-of-the-album]'
 }
 
+overwrite_prompt () {
+	echo -e "Warning! It seems that $1 already exists in the $MUSIC_DIR directory.\nOverwrite files? (y/n)"
+	read user_input
+
+	if [ "$user_input" != "y" ] && [ "$user_input" != "Y" ]
+	then
+		echo "Aborted."
+		exit 1
+	fi
+}
+
 if [ "$1" == "-h" ] || [ "$1" == "--help" ] 
 then
 	print_help
@@ -34,9 +45,11 @@ then
 	exit 1
 fi
 
+# Going into default music directory
+cd $MUSIC_DIR || echo "$MUSIC_DIR does not exist!"; exit 1
+
 # Creating file directories
-mkdir $MUSIC_DIR
-mkdir $MUSIC_DIR/wav/$1
+mkdir $MUSIC_DIR/wav/$1 || overwrite_prompt $1
 mkdir $MUSIC_DIR/mp3/$1
 
 # Ripping cd into wave files
