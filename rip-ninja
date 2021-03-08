@@ -46,7 +46,7 @@ then
 fi
 
 # Going into default music directory
-cd $MUSIC_DIR || echo "$MUSIC_DIR does not exist!" $$ exit 1
+cd $MUSIC_DIR || echo "$MUSIC_DIR does not exist!" && exit 1
 
 # Creating file directories
 mkdir $MUSIC_DIR/wav/$1 || overwrite_prompt $1
