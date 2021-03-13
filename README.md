@@ -3,7 +3,7 @@ Simple script for easy CD audio ripping like a true lazy ninja that you are.
 
 ## How it works?
 Rips all the audio tracks from a CD into `.wav` files and then converts them into `.flac` files.  
-Both `.wav` and `.flac` files are saved into separate directories in `$HOME/Music/` - just the way I like it.
+Both `.wav` and `.flac` files are saved into separate directories in `$HOME/Music/` by default - just the way I like it.
 
 ## How to use it?
 Simply put a CD into your CD drive and launch the script with one argument - name of the album (or whatever it is that you are ripping).
