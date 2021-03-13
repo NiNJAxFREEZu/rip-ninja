@@ -2,8 +2,11 @@
 
 ### You can change some default settings down here if you want to
 
-# Default music directory.
+# Default directories (!!! It is important that WAVE and FLAC directories are separate. Otherwise rip-ninja might not function properly !!!)
+
 MUSIC_DIR=~/Music
+WAVE_DIR=$MUSIC_DIR/wav
+FLAC_DIR=$MUSIC_DIR/flac
 
 ### ------------------------------------------------------------
 
@@ -43,19 +46,19 @@ then
 fi
 
 # Creating tracks directories if they don't exist
-[ -d $MUSIC_DIR ] 	|| mkdir $MUSIC_DIR
-[ -d $MUSIC_DIR/wav ]	|| mkdir $MUSIC_DIR/wav
-[ -d $MUSIC_DIR/flac ] 	|| mkdir $MUSIC_DIR/flac
+[ -d $MUSIC_DIR ] || mkdir $MUSIC_DIR
+[ -d $WAVE_DIR ]  || mkdir $WAVE_DIR
+[ -d $FLAC_DIR ]  || mkdir $FLAC_DIR
 
-mkdir $MUSIC_DIR/wav/$1 || overwrite_prompt $1
-mkdir $MUSIC_DIR/flac/$1
+mkdir $WAVE_DIR/$1 || overwrite_prompt $1
+mkdir $FLAC_DIR/$1
 
 # Ripping cd into wave files
-cd $MUSIC_DIR/wav/$1
+cd $WAVE_DIR/$1
 cdparanoia -B
 
 # Converting ripped wave files into flacs
 for track in *;
 do
-	ffmpeg -i $track $MUSIC_DIR/flac/$1/$track.flac
+	ffmpeg -i $track $FLAC_DIR/$1/$track.flac
 done
