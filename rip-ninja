@@ -11,7 +11,7 @@ FLAC_DIR=$MUSIC_DIR/flac
 ### ------------------------------------------------------------
 
 print_help () {
-	echo 'USAGE: rip-ninja [name-of-the-album]'
+	echo 'USAGE: rip-ninja "name-of-the-album"'
 }
 
 overwrite_prompt () {
