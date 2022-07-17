@@ -1,27 +1,25 @@
 # rip-ninja
-Simple script for easy CD audio ripping like a true lazy ninja that you are.
+Simple wrapper script for easy CD audio ripping like a true lazy ninja that you are.
 
 ## How it works?
-Rips all the audio tracks from a CD into `.wav` files and then converts them into `.flac` files.  
-Both `.wav` and `.flac` files are saved into separate directories in `$HOME/Music/` by default - just the way I like it.
+Rips all the audio tracks from a CD into `.wav` files.
+Then, if you want to, converts them into other audio formats such as `.mp3` or `.flac`.
 
 ## How to use it?
-Simply put a CD into your CD drive and launch the script with one argument - name of the album (or whatever it is that you are ripping).
+Simply put a CD into your CD drive and launch the script.
 You don't even have to mount a CD into a filesystem.  
 
-For example:
 ```bash
-$ ./rip-ninja Master-Of-Puppets
+$ rip-ninja [OUTPUT_AUDIO_FORMAT] [OUTPUT_DIRECTORY_PATH]
 ```
-Will rip every track from a CD and output: 
-- `.wav` files into `$HOME/Music/wav/Master-Of-Puppets/`
-- `.flac` files into `$HOME/Music/flac/Master-Of-Puppets/`.
 
-## But what if I would like to save my files into different directory?!
-To keep the script super simple and bug-free, you can customize some output paths via editing the source code in the dedicated section at the beginning of the script. It sounds scary but it's actually super `easy`.
+By default `OUTPUT_AUDIO_FORMAT` is set to `.wav`, and `rip-ninja` will output files into current working directory.
+You can use any audio conversion format that is supported by `ffmpeg`. So far I have only tested:
+- `.flac`
+- `.mp3`
 
 ## Dependencies
 - cdparanoia (CD ripping)
-- ffmpeg (`.wav` to `.flac` conversion)
+- ffmpeg (`.wav` conversion)
 
 All dependencies are available in most major distros repositories.

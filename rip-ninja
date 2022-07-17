@@ -1,21 +1,15 @@
-#!/bin/bash
+#!/bin/sh
 
-### You can change some default settings down here if you want to
-
-# Default directories (!!! It is important that WAVE and FLAC directories are separate. Otherwise rip-ninja might not function properly !!!)
-
-MUSIC_DIR=~/Music
-WAVE_DIR=$MUSIC_DIR/wav
-FLAC_DIR=$MUSIC_DIR/flac
-
+### ------------------------------------------------------------
+### Functions
 ### ------------------------------------------------------------
 
 print_help () {
-	echo 'USAGE: rip-ninja "name-of-the-album"'
+    echo 'USAGE: rip-ninja [OUTPUT_AUDIO_FORMAT] [OUTPUT_DIRECTORY_PATH]'
 }
 
 overwrite_prompt () {
-	echo -e "Warning! It seems that $1 already exists in the $MUSIC_DIR directory.\nOverwrite files? (y/n)"
+	echo -e "Warning! It seems that $1 already exists.\nOverwrite files? (y/N)"
 	read user_input
 
 	if [ "$user_input" != "y" ] && [ "$user_input" != "Y" ]
@@ -25,40 +19,53 @@ overwrite_prompt () {
 	fi
 }
 
-if [ "$1" == "-h" ] || [ "$1" == "--help" ] 
+### ------------------------------------------------------------
+### Scirpt arguments parsing
+### ------------------------------------------------------------
+
+# Help me!
+if [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "help" ] 
 then
 	print_help
 	exit 0
 fi
 
-if [ -z "$1" ]
-then
-	echo "Please give the name of the album."
-	print_help
-	exit 1
-fi
-
-if [ -n "$2" ]
+# Too many arguments
+if [ $3 ]
 then
 	echo "Too many arguments."
 	print_help
 	exit 1
 fi
 
-# Creating tracks directories if they don't exist
-[ -d $MUSIC_DIR ] || mkdir $MUSIC_DIR
-[ -d $WAVE_DIR ]  || mkdir $WAVE_DIR
-[ -d $FLAC_DIR ]  || mkdir $FLAC_DIR
+# Output audio format
+if [ -z $1 ] || [ $1 = 'wav' ]
+then
+    OUTPUT_AUDIO_FORMAT=""
+else
+    OUTPUT_AUDIO_FORMAT=$1
+fi
 
-mkdir $WAVE_DIR/$1 || overwrite_prompt $1
-mkdir $FLAC_DIR/$1
+# Output directory path
+if [ "$2" ]
+then
+    [ -d "$2" ] || mkdir "$2" || overwrite_prompt "$2"
+    cd "$2"
+fi
+
+### ------------------------------------------------------------
+### Actual ripping audio part (let's goooooooooo)
+### ------------------------------------------------------------
 
 # Ripping cd into wave files
-cd $WAVE_DIR/$1
 cdparanoia -B
 
 # Converting ripped wave files into flacs
-for track in *;
-do
-	ffmpeg -i $track $FLAC_DIR/$1/$track.flac
-done
+if [ $OUTPUT_AUDIO_FORMAT ]
+then
+    for track in *.wav;
+    do
+        ffmpeg -i $track $track.$OUTPUT_AUDIO_FORMAT
+        rm $track
+    done
+fi
